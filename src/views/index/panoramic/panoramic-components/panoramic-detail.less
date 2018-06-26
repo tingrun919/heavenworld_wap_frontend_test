@@ -1,0 +1,245 @@
+/*
+ * @Author: tarn.tianrun 
+ * @Date: 2018-03-08 15:57:45 
+ * @Last Modified by: tarn.tianrun
+ * @Last Modified time: 2018-04-13 17:35:27
+ */
+
+.blessing-display{
+	left: 0;
+	right: 0;
+	margin: 0 5px;
+	position: absolute;
+	bottom: 0;
+	padding: 0 10px;
+	// background: #ffffff;
+	background: rgba(255, 255, 255, 0.7)
+}
+.blessing-btn{
+	display: flex;
+	:first-child{
+		text-align: left;
+	}
+	:last-child{
+		text-align: right;
+	}
+	div{
+		flex: 1;
+	}
+	img{
+		vertical-align: middle;
+	}
+}
+.blessing-text{
+	border-radius: 6px;
+	width: 100%;
+	background-size: cover;
+	opacity:0.7;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 60px 0 5px 0;
+	// margin-bottom: 5px;
+}
+.blessing-text-enter{
+	height: 120px;
+	border: 1px solid rgba(256, 256, 256, .7);
+	margin: 10px;
+	border-radius: 6px;
+	text-align: left;
+	padding: 10px;
+    outline: 0; 
+	word-wrap: break-word;
+    overflow-x: hidden;
+	overflow-y: auto;
+	font-size: 14px;
+	letter-spacing: .7px;
+	font-weight: 400;
+	background-color: rgba(255, 255, 255, 0.6);
+	textarea{
+		background-color: rgba(255, 255, 255, 0.6);
+	}
+}
+.blessing-action{
+	padding: 10px 0;
+	display: flex;
+	text-align: center;
+	div{
+		flex: 1;
+	}
+	img{
+		vertical-align: middle;
+	}
+}
+.blessing-other{
+	width: 100%;
+	text-align: center;
+}
+.red{
+	border: 1px solid #FF6666 !important;
+	color: #FF6633 !important;	
+}
+.blessing-other-info{
+	line-height: 35px;
+	text-align: center;
+	color: #999999;
+	border: 1px solid #3399FF;
+	background-color: #fff;
+	display: inline-block;
+	border-radius: 12px;
+	font-size: 12px;
+	img{
+		vertical-align: middle;
+		padding-right: 5px;
+	}
+}
+
+.blessing-model{
+	padding: 0;
+	background-color: #fff;
+	span{
+		font-size: 12px;
+	}
+}
+.ischiose{
+	border: 1px solid #3d3d3d;
+}
+.red-info{
+	background-color: #F2F2F2;
+}
+.red-info-main{
+	display: flex;
+	.red-info-main-span{
+		margin: 5px;
+		color: red;
+		font-size: 17px;
+		letter-spacing: 1px;
+		font-weight: 400;
+		flex: 1;
+		text-align: left;
+	}
+}
+.red-info-submain{
+	display: flex;
+	a{
+		margin: 5px;
+		flex: 1;
+		border: 1px solid red;
+	}
+}
+.red-change{
+	flex: 1;
+	display: flex;
+	align-items: center;
+	span{
+		margin: 5px;
+		font-size: 17px;
+		font-weight: 400;
+		letter-spacing: 1px;
+		text-align: left;
+		color: red;
+	}
+	:last-child{
+		text-align: right;
+		padding-right: 12px;
+		color: #999999;
+		letter-spacing: .5px;
+		font-size: 12px;
+		background-image: url('../../../../assets/panoramic-img/panoramic-change-red.png');
+		background-repeat: no-repeat;
+		background-position: right;
+		background-size: 10px;
+	}
+}
+.red-password{
+	display: flex;
+	align-items: center;
+	a{
+		margin: 5px;
+		flex: 1;
+		border: 1px solid red;
+	}
+}
+.mint-cell{
+	min-height: 35px;
+}
+.red-info-balance{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	span{
+		font-size: 12px;
+	}
+}
+.red-info-btn{
+	padding: 5px;
+	button{
+		width: 100%;
+	}
+}
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-fade-enter-active, .slide-fade-leave-active{
+	transition: all .5s ease;
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+	transform: translateY(10px);
+	opacity: 0;
+  }
+.v-shadow{
+	z-index: 1;
+	position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .8;
+	background: #000;
+	text-align: right;
+	img{
+		padding:10px;
+	}
+}
+.v-video{
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.voice{ 
+	padding-top: 12px;
+	padding-left: 10px;
+	margin: 100px auto;
+	height: 35px;
+	width: 150px;
+	background: #1bbc9b;
+	border-radius: 0 7px 7px;
+  }
+  
+  .bg {
+	display: inline-block;
+	vertical-align: middle;
+	// background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAYCAYAAAAF6fiUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzlFRDZDRDNENzlFMTFFNkJDN0NFMjA2QTFFRTRDQkIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzlFRDZDRDJENzlFMTFFNkJDN0NFMjA2QTFFRTRDQkIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTAxQkEzQ0RENzM2MTFFNjgyMEI5MTNDRkQ0OTM5QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MTAxQkEzQ0VENzM2MTFFNjgyMEI5MTNDRkQ0OTM5QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4K4iKVAAACUUlEQVR42uSazytEURTHvTHjR4kaU8xsSDZSdmbjx4oSK8XGQrJlpSwYTSmxEWWhUIpsZK3kD7DRNBuSBZFCNjZ+JPKcV6ecXu/d3sy7595bc+vbfXPue5/749z77o83lm3bZYYFC8RZqAbQAigP2tXNj5aZF7gdkAZNk9+7WvnOCCgxRUCb9n/o1sk3pUH6QDHF/GNsoM+QeYfiy6qkFeLZDBb0GlTB4AAR/xXT9nXxZVa0WCekQd9Y0HOJjg3CHySviiZmfjO3AyIhnu0gBc0wjAIR/wLtW8z87aAOWAI9gqaYRoAff4ZUoi7EKCiUP462j4CdSCrfK4N1Ahpi6I0i/hPa50M4oFB+Dbm/SzXfL5MD4rUogxP8+Itozynm59E+q5ovyuQdHxphWh568XvR5kxq1SEn40L4e0XMA1L4EcEe7RTjLqYdqRf/gezQUwr5LxjXq+aLHPCFcTmTA7z4tutIQhXfLiJPKXyRA/oxzgW8v9DgxU+S62eF/ATGr6r5fg26Corj9RHD4Z0fvwfjS9CbQn4bxrfK+R6TyzxZNk260solTL4i/g3al10TsMXIryA72T7VfK8MnJO8X9CKy14lafXjxx8jFUsSeyUzfxhtPwHPoqTy/TJJMJzJiPgNpJdsuNJizPwztB/q4JtwHN2KW3sn3HuMOouR30l6bbsOvgkOyGIBnaPbRldalJl/h2knuvgmOKAWNAFKMUz4Iv4O6Z1xXXxTPxtazHy6khnVyS/Fb8IDpHGyuvmWgX9L4Q4toDnQFWhNN/9PgAEAR4w1ULjdCbEAAAAASUVORK5CYII=) right 0 no-repeat;
+	background: url('../../../../assets/panoramic-img/34.png') right 0 no-repeat;
+	width: 20px;
+	height: 20px;
+	background-size: 400%;
+  }
+  
+  .voicePlay {
+	animation-name: voicePlay;
+	animation-duration: 1s;
+	animation-direction: normal;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(3);
+  }
+  
+  @keyframes voicePlay {
+	0% {
+	  background-position: 0;
+	}
+	100% {
+	  background-position: 100%;
+	}
+  }

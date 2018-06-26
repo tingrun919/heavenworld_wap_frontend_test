@@ -1,0 +1,76 @@
+/*
+ * @Author: tarn.tianrun 
+ * @Date: 2018-02-26 15:19:03 
+ * @Last Modified by: tarn.tianrun
+ * @Last Modified time: 2018-03-20 21:47:46
+ */
+
+ .score-list-main{
+	position: absolute;
+	width: 100%;
+	margin-top: 40px;
+}
+.score-top{
+	padding: 10px;
+}
+.score-top-info{
+	border-radius: 6px;
+	background: #DC5553;
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+	padding: 10px;
+	font-size: 14px;
+	:nth-child(1){
+		align-self: flex-start;
+	}
+	:nth-child(2){
+		align-self: center;
+		font-size: 30px;
+	}
+	:nth-child(3){
+		align-self: flex-end;
+		background: #fff;
+		color: #DC5553;
+		padding: 4px 9px;
+		border-radius: 4px;
+		font-size: 12px;
+	}
+}
+.score-main{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #d3d3d3;
+	font-size: 15px;
+	margin: 0 10px;
+	padding: 10px 0;
+}
+.score-main-left{
+	:last-child{
+		padding-left: 5px;
+	}
+	:nth-child(2){
+		padding-left: 5px;
+	}
+	img{
+		vertical-align: middle;
+	}
+}
+.score-main-right{
+	display: flex;
+	align-items: center;
+	color: #2EAEE4;
+	font-size: 17px;
+	font-weight: 500;
+}
+.score-main-right-title{
+	display: flex;
+	color: #000;
+	flex-direction: column;
+	align-items: center;
+	padding-left: 15px;
+	span{
+		padding-bottom: 5px;
+		font-size: 12px;
+	}
+}

@@ -1,0 +1,435 @@
+﻿<krpano version="1.19" title="Virtual Tour">
+    <include url="skin/vtourskin.xml" />
+    <layer name="sltbg" type="container" keep="true" width="100%" height="110" align="bottom" y="-170" bgalpha="0.5" zorder="98">
+        <layer name="scrollareabg" type="container" keep="true" height="110" align="top" bgcolor="0xff0000" bgalpha="0" onloaded="sub(layer[scrollareabg].width,stagewidth,20); aaaa();">
+            <layer name="scrollarea1" url="../%SWFPATH%/plugins/scrollarea.js" keep="true" align="lefttop" height="110" y="15" direction="h" width="calc:12*100-16">
+                <layer style="slts" sid="0" title="学校大门" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713129/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong0"/>
+				<layer style="slts" sid="1" title="进入校区" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713130/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong1"/>
+				<layer style="slts" sid="2" title="操场东侧" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713387/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong2"/>
+				<layer style="slts" sid="3" title="校办公室" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713392/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong3"/>
+				<layer style="slts" sid="4" title="西侧楼梯" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713394/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong4"/>
+				<layer style="slts" sid="5" title="走廊入口" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713434/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong5"/>
+                <layer style="slts" sid="6" title="走廊" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713436/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong6"/>
+                <layer style="slts" sid="7" title="教室" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10718312/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong7"/>
+				<layer style="slts" sid="8" title="教室" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10717820/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong8"/>
+				<layer style="slts" sid="9" title="教室" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713430/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong9"/>
+                <layer style="slts" sid="10" title="午休宿舍" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713433/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong10"/>
+                <layer style="slts" sid="11" title="厨房" url="http://thumb-qiniu.720static.com/@/resource/prod/5b833138s2h/ac2jO5mmsm8/10713442/imgs/thumb.jpg?imageView2/0/w/200/h/200" name="scene_hongkong11"/>
+			</layer>
+        </layer>
+    </layer>
+    <autorotate enabled="true"
+        		waittime="5.0"
+        		speed="3.0"
+    	   	 	horizon="0.0"
+	        	tofov="120.0"
+	/>
+    <style name="icotxt" url="../%SWFPATH%/plugins/textfield.swf" keep="true" align="bottom" edge="top" y="2" background="false" css="text-align:center; font-family:微软雅黑; font-size:15px; color:#ffffff;"/>
+    <style name="slts" keep="true" width="80" height="80" 
+		onloaded="
+			txtadd(onclick,'loadscene(',get(name),', null, MERGE,BLEND(0.5));');
+			set(x,calc( sid * 100 + 2));
+			txtadd(kk_name,'dm_k_',get(name));
+			addlayer(get(kk_name));
+			set(layer[get(kk_name)].parent,get(name));
+			layer[get(kk_name)].loadstyle(dm_kk);
+
+			txtadd(txt_name,'dm_txt_',get(name));
+			addlayer(get(txt_name));
+			set(layer[get(txt_name)].parent,get(name));
+			set(layer[get(txt_name)].html,get(title));
+			layer[get(txt_name)].loadstyle(txt2);
+		"
+	/>
+    <style name="dm_kk" type="container" keep="true" width="80" height="80" align="center" bgalpha="0" bgborder="2 0xffffff 1" onloaded="slt_ss();"/>
+    <style name="txt2" url="%SWFPATH%/plugins/textfield.swf" keep="true" align="bottom" width="100%"
+		background="true" enabled="false"
+       backgroundcolor="0x000000" vcenter="true"
+       backgroundalpha="0.5"
+		css="text-align:center; font-family:微软雅黑; font-size:12px; color:#ffffff;"
+
+	/>
+    <events name="dm_event" keep="true" onnewpano="delayedcall(0.2, slt_ss(););" />
+    <action name="slt_ss">
+		if(xml.scene,
+			set(layer[get(_kk_name)].bgborder, '3 0xffffff 1');
+			txtadd(_kk_name,'dm_k_',get(scene[get(xml.scene)].name));
+			set(layer[get(_kk_name)].bgborder, '3 0xF6B64C 1');
+			txtadd(_pano_names,'',get(scene[get(xml.scene)].name));
+			if(layer[get(_pano_names)].parent == 'scrollarea1',
+				set(layer[scrollarea1].visible,true);
+				layer[scrollarea1].scrolltocenter(calc(layer[get(_pano_names)].x + layer[get(_pano_names)].width/2),40);
+			);
+		);
+	</action>
+    <action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		js(testaaa();)
+		if(startactions !== null, startactions() );
+		if(autorotate.enabled,bombtimer(0));
+    </action>
+    <action name="bombtimer"> 
+              set(autorotate.enabled,true); 
+              set(bt,%1); 
+              add(bt,1); 
+              
+        <!-- delayedcall(1,bombtimer(get(bt)));  -->
+              copy(bt_1,autorotate.speed); 
+              Math.abs(bt_1);
+              div(bt_2,360,bt_1); 
+              add(bt_2,autorotate.waittime); 
+              if(bt GE bt_2, set(bt,0); nextscene();); 
+	
+    </action>
+    <action name="nextscene"> 
+              set(ns, get(scene[get(xml.scene)].index)); 
+              set(maxs, get(scene.count)); 
+              add(ns,1); 
+              if(ns == maxs, set(ns,0)); 
+              loadscene(get(scene[get(ns)].name), null, MERGE, BLEND(0.5)); 
+	</action>
+    <action name="draghotspot">
+		spheretoscreen(ath, atv, hotspotcenterx, hotspotcentery, 'l');
+		sub(drag_adjustx, mouse.stagex, hotspotcenterx);
+		sub(drag_adjusty, mouse.stagey, hotspotcentery);
+		asyncloop(pressed,
+			sub(dx, mouse.stagex, drag_adjustx);
+			sub(dy, mouse.stagey, drag_adjusty);
+			screentosphere(dx, dy, ath, atv);
+		);
+	</action>
+    <action name="dragcommenthotspot">
+		spheretoscreen(ath, atv, hotspotcenterx, hotspotcentery, 'l'); 
+		sub(drag_adjustx, mouse.stagex, hotspotcenterx); 
+		sub(drag_adjusty, mouse.stagey, hotspotcentery); 
+		asyncloop(pressed,
+			sub(dx, mouse.stagex, drag_adjustx); 
+			sub(dy, mouse.stagey, drag_adjusty);
+			screentosphere(dx, dy, ath, atv);
+        
+        <!--  将坐标赋值到当前热点  -->
+		set(hlookat,get(ath)); set(vlookat,get(atv)); );
+    
+    </action>
+	    <action name="hotspot_Handle">
+for(set(i,0), i LT hotspot.count, inc(i), txtadd(hotspot[get(i)].onclick,'loadscene(scene_',get(hotspot[get(i)].linkedscene),', null, MERGE,BLEND(0.5));'); set(hotspot[get(i)].scale,0.5); if(hotspot[get(i)].name != 'vr_cursor', txtadd(txtname,'dm_txt_',get(i)); addlayer(get(txtname)); layer[get(txtname)].loadstyle(txt); copy(layer[get(txtname)].html,hotspot[get(i)].linkedscene_name); copy(layer[get(txtname)].parent_name,hotspot[get(i)].name); hsss(get(txtname)); ); );
+</action>
+    <action name="hsss">
+spheretoscreen(hotspot[get(layer[%1].parent_name)].ath,hotspot[get(layer[%1].parent_name)].atv, layer[%1].x, layer[%1].y); add(layer[%1].y,-22); if(webvr.isenabled, set(layer[%1].visible,false); , set(layer[%1].visible,true); ); delayedcall(0, hsss(%1) );
+</action>
+    <action name="hotspot_animate_new">
+inc(frame,1,get(lastframe),0); mul(xpos,frame,frameheight); txtadd(crop,get(xpos),'|0|',get(framewidth),'|',get(frameheight)); delayedcall(0.035, if(loaded, hotspot_animate_new()));
+</action>
+    <action name="hotspot_animate">
+inc(frame,1,get(lastframe),0); mul(ypos,frame,frameheight); txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight)); delayedcall(0.03, hotspot_animate());
+</action>
+    <events onenterfullscreen="" onexitfullscreen="" onxmlcomplete="" onpreviewcomplete="" onloadcomplete="" onnewpano="js(getComment(););hotspot_Handle();" onremovepano="" onnewscene="" onloaderror="" onkeydown="" onkeyup="" onclick="" onmousedown="set(bt,0);" onmouseup="" onmousewheel="" onidle="" onviewchange="" onviewchanged="" onresize="" onautorotatestart="" onautorotatestop="" onautorotateoneround="" onautorotatechange=""/>
+    <scene name="scene_hongkong0" title="hongkong" pano_id="hongkong0" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713129/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713129/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713129/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713129/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="new_spotd01" ath="2.06" atv="12.92" linkedscene="hongkong1"/>
+    </scene>
+	<scene name="scene_hongkong1" title="hongkong" pano_id="hongkong1" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713130/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713130/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713130/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713130/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="new_spotd01" ath="-10.06" atv="5.92" linkedscene="hongkong9"/>
+		<hotspot name="hotspot_2" style="new_spotd01" ath="131.34" atv="1.85" linkedscene="hongkong4"/>
+		<hotspot name="hotspot_3" style="hotspot_47" ath="138.48" atv="14.27" linkedscene="hongkong3"/>
+		<hotspot name="hotspot_4" style="hotspot_44" ath="-36.79" atv="0.01" linkedscene="hongkong2"/>
+		<hotspot name="hotspot_5" style="hotspot_44" ath="-155.29" atv="10.58" linkedscene="hongkong0"/>
+    </scene>
+	<scene name="scene_hongkong2" title="hongkong" pano_id="hongkong2" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713387/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1800" tiledimageheight="1800">
+                <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713387/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="1020" tiledimageheight="1020">
+                <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713387/imgs/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713387/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="hotspot_46" ath="-55.68" atv="3.37" linkedscene="hongkong9"/>
+		<hotspot name="hotspot_2" style="hotspot_46" ath="-34.55" atv="2.36" linkedscene="hongkong11"/>
+		<hotspot name="hotspot_3" style="new_spotd01" ath="-0.16" atv="10.01" linkedscene="hongkong1"/>
+		<hotspot name="hotspot_4" style="hotspot_47" ath="16.06" atv="4.10" linkedscene="hongkong5"/>
+    </scene>
+
+	<scene name="scene_hongkong3" title="hongkong" pano_id="hongkong3" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713392/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1790" tiledimageheight="1790">
+                <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713392/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="1020" tiledimageheight="1020">
+                <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713392/imgs/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713392/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="hotspot_40" ath="-76.84" atv="31.81" linkedscene="hongkong5"/>
+
+    </scene>
+    
+	<scene name="scene_hongkong4" title="hongkong" pano_id="hongkong4" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713394/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713394/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713394/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713394/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="new_spotd01" ath="-5.32" atv="31.23" linkedscene="hongkong1"/>
+		<hotspot name="hotspot_2" style="hotspot_47" ath="11.51" atv="-7.38" linkedscene="hongkong9"/>
+
+    </scene>
+
+	<scene name="scene_hongkong5" title="hongkong" pano_id="hongkong5" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano34.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713434/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano34.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713434/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano34.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713434/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano34.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713434/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="hotspot_47" ath="14.89" atv="22.71" linkedscene="hongkong1"/>
+		<hotspot name="hotspot_2" style="new_spotd01" ath="0.60" atv="3.23" linkedscene="hongkong9"/>
+    </scene>
+
+	<scene name="scene_hongkong6" title="hongkong" pano_id="hongkong6" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713436/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713436/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713436/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713436/imgs/mobile_%s.jpg" />
+        </image>
+				<hotspot name="hotspot_1" style="hotspot_46" ath="-4.93" atv="9.61" linkedscene="hongkong10"/>
+		<hotspot name="hotspot_2" style="new_spotd01" ath="1.54" atv="41.45" linkedscene="hongkong5"/>
+    </scene>
+
+	<scene name="scene_hongkong7" title="hongkong" pano_id="hongkong7" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10718312/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10718312/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10718312/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano37.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10718312/imgs/mobile_%s.jpg" />
+        </image>
+		<hotspot name="hotspot_1" style="new_spotd01" ath="-33.42" atv="12.13" linkedscene="hongkong5"/>
+    </scene>
+
+	<scene name="scene_hongkong8" title="hongkong" pano_id="hongkong8" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10717820/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1790" tiledimageheight="1790">
+                <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10717820/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="1020" tiledimageheight="1020">
+                <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10717820/imgs/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano36.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10717820/imgs/mobile_%s.jpg" />
+        </image>
+			<hotspot name="hotspot_1" style="hotspot_47" ath="-30.05" atv="15.65" linkedscene="hongkong4"/>
+    </scene>
+
+	<scene name="scene_hongkong9" title="hongkong" pano_id="hongkong9" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713430/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713430/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713430/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713430/imgs/mobile_%s.jpg" />
+        </image>
+					<hotspot name="hotspot_1" style="new_spotd01" ath="72.89" atv="14.90" linkedscene="hongkong1"/>
+
+    </scene>
+
+	<scene name="scene_hongkong10" title="hongkong" pano_id="hongkong10" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713433/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713433/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713433/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano38.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713433/imgs/mobile_%s.jpg" />
+        </image>
+				<hotspot name="hotspot_1" style="hotspot_40" ath="-104.43" atv="18.94" linkedscene="hongkong6"/>
+
+    </scene>
+
+	<scene name="scene_hongkong11" title="hongkong" pano_id="hongkong11" onstart="" havevrimage="true" thumburl="panos/hongkong.tiles/thumb.jpg" lat="" lng="" heading="">
+        <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713442/imgs/preview.jpg" />
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="1900" tiledimageheight="1900">
+                <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713442/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+			<level tiledimagewidth="950" tiledimageheight="950">
+                <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713442/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+        </image>
+        <image if="webvr.isenabled">
+            <cube url="http://pano35.qncdn.720static.com/resource/prod/5b833138s2h/ac2jO5mmsm8/10713442/imgs/mobile_%s.jpg" />
+        </image>
+						<hotspot name="hotspot_1" style="hotspot_46" ath="142.30" atv="25.08" linkedscene="hongkong1"/>
+
+    </scene>
+
+
+    <!-- 音乐图标 -->
+    <layer name="sound" if="!webvr.isenabled" url="../%SWFPATH%/plugins/soundinterface.js" preload="true" rootpath=""/>
+    <!-- 声音 -->
+	<layer name="soundico" if="!webvr.isenabled" url="sound.png" align="righttop" x="10" y="10" keep="true" crop="0|70|62|62" scale="0.5" onclick=" if(crop == '0|70|62|62', set(crop,'0|0|62|62'); js(getMusciList();) , set(crop,'0|70|62|62'); js(getMusciList();) ); "/>
+    <layer name="webvrenterbutton" if="!webvr.isenabled" url="vr.png" align="righttop" x="10" y="50" keep="true" scale="0.5" onclick="webvr.enterVR(); webvr_act_as_gyro_in_portrait_mode();"/>
+	<layer name="say" if="!webvr.isenabled" url="sound1.png" align="righttop" x="10" y="90" keep="true" crop="0|70|62|62" scale="0.5" onclick=" if(crop == '0|70|62|62', set(crop,'0|0|62|62'); js(switch_show_comment(false);) , set(crop,'0|70|62|62'); js(switch_show_comment(true);) ); "/>
+    <!-- <layer name="webvrexitbutton" url="vr2.png" align="righttop" x="10" y="10" keep="true" scale="0.5"/> -->
+    <action name="webvr_act_as_gyro_in_portrait_mode">
+if(device.mobile AND webvr.isenabled, div(aspect, stagewidth, stageheight); if(aspect != lastaspect OR '%1' == 'true', copy(lastaspect, aspect); if(stagewidth GT stageheight,
+
+        
+        <!--
+ landscape orientation - use stereo rendering and a direct/fast gyro sensor mode 
+-->
+set(display.stereo, true); set(webvr.mobilevr_sensor_mode, 3); webvr.update(); tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 0.0); ,
+
+        
+        <!--
+ portrait orientation - use normal rendering and a smoother/slower gyro sensor mode 
+-->
+set(display.stereo, false); set(webvr.mobilevr_sensor_mode, 1); webvr.update(); tween(layer[webvr_rotate_to_landscape_request].alpha, 1.0); delayedcall(3.0, tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 1.0); ); ); ); , set(lastaspect, 0); );
+
+    
+    </action>
+    <style name="hotspot_4" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot1.png?2.2.7"/>
+    <style name="hotspot_5" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot2.png?2.2.7"/>
+    <style name="hotspot_6" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot3.png?2.2.7"/>
+    <style name="hotspot_7" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot4.png?2.2.7"/>
+    <style name="hotspot_8" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot5.png?2.2.7"/>
+    <style name="hotspot_9" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot6.png?2.2.7"/>
+    <style name="hotspot_10" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot7.png?2.2.7"/>
+    <style name="hotspot_11" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot8.png?2.2.7"/>
+    <style name="hotspot_12" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot9.png?2.2.7"/>
+    <style name="hotspot_13" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot10.png?2.2.7"/>
+    <style name="hotspot_14" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot11.png?2.2.7"/>
+    <style name="hotspot_15" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot12.png?2.2.7"/>
+    <style name="hotspot_16" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot13.png?2.2.7"/>
+    <style name="hotspot_17" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot14.png?2.2.7"/>
+    <style name="hotspot_18" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot15.png?2.2.7"/>
+    <style name="hotspot_19" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot16.png?2.2.7"/>
+    <style name="hotspot_20" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot17.png?2.2.7"/>
+    <style name="hotspot_21" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot18.png?2.2.7"/>
+    <style name="hotspot_22" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot19.png?2.2.7"/>
+    <style name="hotspot_23" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spotd1_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="9" onloaded="hotspot_animate();"/>
+    <style name="hotspot_24" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spotd2_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="9" onloaded="hotspot_animate();"/>
+    <style name="hotspot_25" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spotd3_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="9" onloaded="hotspot_animate();"/>
+    <style name="hotspot_26" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spotd4_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="9" onloaded="hotspot_animate();"/>
+    <style name="hotspot_27" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spotd5_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="9" onloaded="hotspot_animate();"/>
+    <style name="hotspot_28" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/static_link.png?2.2.7"/>
+    <style name="hotspot_29" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/static_gallery.png?2.2.7"/>
+    <style name="hotspot_30" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/static_video.png?2.2.7"/>
+    <style name="hotspot_31" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/static_txt.png?2.2.7"/>
+    <style name="hotspot_32" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/static_music.png?2.2.7"/>
+    <style name="hotspot_33" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd1_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_34" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd2_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_35" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd3_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_36" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd4_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_37" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd5_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_38" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd6_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_39" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd7_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_40" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd8_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_41" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd9_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_42" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd10_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_43" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd11_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_44" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd12_gif.png?2.2.7" framewidth="128" frameheight="128" frame="0" lastframe="24" onloaded="hotspot_animate();"/>
+    <style name="hotspot_45" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd1.png?2.2.7"/>
+    <style name="hotspot_46" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd2.png?2.2.7"/>
+    <style name="hotspot_47" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd3.png?2.2.7"/>
+    <style name="hotspot_48" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd4.png?2.2.7"/>
+    <style name="hotspot_49" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd5.png?2.2.7"/>
+    <style name="hotspot_50" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd6.png?2.2.7"/>
+    <style name="hotspot_51" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd7.png?2.2.7"/>
+    <style name="hotspot_52" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd8.png?2.2.7"/>
+    <style name="hotspot_53" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd9.png?2.2.7"/>
+    <style name="hotspot_54" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd10.png?2.2.7"/>
+    <style name="hotspot_55" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd11.png?2.2.7"/>
+    <style name="hotspot_56" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/new_spotd12.png?2.2.7"/>
+    <style name="hotspot_57" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot20.png?2.2.7"/>
+    <style name="hotspot_58" crop="0|0|128|128" url="https://ssl-player.720static.com/@/krp/hotspot/v2/spot21.png?2.2.7"/>
+    <style name="new_spotd01"  scale="0.5" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd01_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd02" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd02_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd03" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd03_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd04" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd04_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd05" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd05_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd06" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd06_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd07" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd07_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd08" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd08_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd09" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd09_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd10" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd10_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+    <style name="new_spotd11" crop="0|0|100|100" url="https://ssl-player.720static.com/@/krp/1.19-pr8/hotspotIcons/new_spotd11_gif.png" framewidth="100" frameheight="100" frame="0" lastframe="16" onloaded="hotspot_animate_new();"/>
+</krpano>

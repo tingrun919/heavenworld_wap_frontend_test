@@ -1,0 +1,46 @@
+/*
+ * @Author: tarn.tianrun 
+ * @Date: 2018-02-07 16:26:16 
+ * @Last Modified by:   tarn.tianrun 
+ * @Last Modified time: 2018-02-07 16:26:16 
+ */
+
+.scroll-content-img{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: flex-start;
+	padding: 10px;
+	img{
+		flex: none;
+	}
+}
+.scroll-content-right{
+	flex: 1;
+	text-align: right;
+	span{
+		background-color: #B5B5B5;
+		color: #ffffff;
+		font-size: 8px;
+		padding: 0 3px;
+	}
+}
+.scroll-content-info{
+	flex: 1;
+	margin-left: 10px;
+	text-align: left;
+	:last-child{
+		margin-top: 20px;
+	}
+	p{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+.scroll-content-info-span{
+	text-align: left;
+	span{
+		font-size: 15px;
+	}
+}
